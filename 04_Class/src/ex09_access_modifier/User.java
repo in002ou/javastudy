@@ -23,17 +23,49 @@ public class User {
 	  	1. getter
 	  		1) 필드값을 외불 반출하는 메소드
 	  		2) get + 필드 이름을 가지는데 이를 수정하면 안 된다.
-	  		
+	  		3) boolean타입은 이름이 get이 아닌 is로 (시작한다 is + 필드 이름)
 	  	2. setter
 	  		1) 외부로부터 필드값을 받아오는 메소드
 	  		2) set + 필드 이름을 가지는데 이를 수정하면 안 된다.
-	 
 	 */
 	
 	// 필드
 	private String id;
+	
 	private String pw;
+	private boolean isVip;
+	
+	// 메소드
+
 	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	
+	public boolean isVip() {
+		return isVip;
+	}
+	
+	public void setVip(boolean isVip) {
+		this.isVip = isVip;
+
+	}	
+		/*
+	
+	상단 메뉴 source의 generate getters and setters를 통해
+	바로 만들 수 있다.
+	 
+	 public String getId() {
 		return id;
 	}
 	public void setId(String id) {
@@ -45,8 +77,8 @@ public class User {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-
-	// 메소드
+	
+	*/
 	
 	
 }
