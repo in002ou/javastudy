@@ -56,15 +56,14 @@ public class Ex01_for {
 		for(int dan = 2; dan < 10; dan++) {
 			
 			for(int a = 1; a < count; a++) {
-			
+				
 			System.out.println(dan + " X " + a + " = " + dan * a);
-		
 			}
-		
 		}
 		
-		
 	}
+		
+		
 	
 	public static void main(String[] args) {
 		ex04();

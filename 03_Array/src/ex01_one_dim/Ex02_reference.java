@@ -4,7 +4,7 @@ public class Ex02_reference {
 
 	public static void ex01() {
 		
-		int[] arr;
+		int[] arr;	//reference(참조값) = address(주소값)
 		
 		arr = new int[5];
 		
@@ -14,8 +14,8 @@ public class Ex02_reference {
 	
 	public static void ex02() {
 		
-		int[] a = new int[5];
-		int[] b;
+		int[] a = new int[5];  //b에 a를 저장하여 같은 주소를 가진다.
+		int[] b;			  // b에 값을 저장하고 a에서 불러와도 값이 같다.
 		
 		b = a;
 		
@@ -23,13 +23,15 @@ public class Ex02_reference {
 			System.out.println(b[i]);
 		}
 		
+		
+		
 		/*
         |-------|
       a | 0x123 |──────────┐    
-        |-------|          │
+        |-------|          │   	16진수0x or 0X
         |  ...  |          │
         |-------|          │
-   a[0] |   0   | 0x123    │
+   a[0] |   0   | 0x123    │ 
         |-------|          │
    a[1] |   0   |          │
         |-------|          │

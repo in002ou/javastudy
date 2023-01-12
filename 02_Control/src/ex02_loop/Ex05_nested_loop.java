@@ -33,7 +33,7 @@ public class Ex05_nested_loop {
 	
 	public static void ex03() {
 		
-		int count = 1;
+	
 		
 		
 	}
