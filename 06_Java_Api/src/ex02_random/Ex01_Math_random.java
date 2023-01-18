@@ -11,7 +11,7 @@ public class Ex01_Math_random {
 		
 		double randNumber = Math.random();	// 0.0 <= 난수 < 1.0
 		
-		if(randNumber < 0.1) { 		// 10% 확률
+		if(randNumber <= 0.1) { 		// 10% 확률
 			System.out.println("대박");
 			
 		} else {
@@ -44,7 +44,7 @@ public class Ex01_Math_random {
 	public static void main(String[] args) {
 
 		
-		ex02();
+		ex01();
 		
 	}
 
