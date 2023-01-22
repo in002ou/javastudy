@@ -8,7 +8,7 @@ public class MainClass {
 	// 당신은 가위, 컴퓨터는 보, 이겼습니다.
 	// Hint : 가위는 0, 바위는 1, 보는 2로 처리한다.
 	public static void ex01() {
-		
+		int a = 10;
 	}
 	
 	// 문제2. 친구 3명을 저장할 수 있는 배열을 생성하고 임의의 값으로 초기화하시오.
