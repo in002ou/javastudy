@@ -4,7 +4,7 @@ public class MainClass {
 
 	public static void main(String[] args) {
 
-		// static 요소는 객체를 이용해서 호풀할 수 있으나, 권장하지 않는다.
+		// static 요소는 객체를 이용해서 호출할 수 있으나, 권장하지 않는다.
 		
 		MyMath myMath = new MyMath();
 		System.out.println(myMath.PI);

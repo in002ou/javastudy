@@ -21,9 +21,15 @@ public class MainClass {
 			double randNumber = secureRandom.nextDouble();
 			if(randNumber < 0.33) {
 				sbCode.append((char)((int)(secureRandom.nextDouble() * 26) + 'A'));
+			} else if(randNumber < 0.66) {
+				sbCode.append((char)((int)(secureRandom.nextDouble() * 26) + 'a'));
+			} else {
+				sbCode.append((char)((int)(secureRandom.nextDouble() * 10) +'0'));
 			}
 		}
-			
+		String code = sbCode.toString();
+		System.out.println("생성된 " + count + "자리 인증번호는 " + code + "입니다.");
+		sc.close();
 	}
 	
 	public static void main(String[] args) {

@@ -13,7 +13,7 @@ public class Watch {
 		this.minute = minute;
 		this.second = second;
 	}
-	
+	 
 	// 메소드
 	public void addHour(int hour) {
 		if(hour <= 0) {

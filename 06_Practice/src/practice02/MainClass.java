@@ -1,5 +1,8 @@
 package practice02;
 
+import java.security.SecureRandom;
+import java.util.Scanner;
+
 public class MainClass {
 
 	// 문제1. 통장(balance)에 최초 5000원이 있다.
@@ -128,6 +131,19 @@ public class MainClass {
 	// 몇 자리의 인증번호를 생성할까요? >>> 6
 	// 생성된 6자리 인증번호는 Fa013b입니다.
 	public static void ex08() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("몇 자리 인증번호를 생성할까요 >>");
+		int count = sc.nextInt();
+		SecureRandom secureRandom = new SecureRandom();
+		StringBuilder sbCode = new StringBuilder();
+		for(int n = 0; n < count; n++) {
+			double randNumber = secureRandom.nextDouble();
+			if(randNumber < 0.33) {
+				sbCode.append((char)((int)(secureRandom.nextDouble() * 26) + 'A'));
+				
+			}
+			
+		}
 		
 	}
 	

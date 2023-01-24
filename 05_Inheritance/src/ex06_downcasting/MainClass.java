@@ -4,7 +4,7 @@ public class MainClass {
 
 	public static void ex01() {
 		
-		Person person = new Student();	//업 캐스팅 자식을 부모타팁으로 저장.
+		Person person = new Student();	//업 캐스팅 자식을 부모타입으로 저장.
 		/*
 	 	업 캐스팅 문제점 해결 방법 두가지
 	 	1. 슈퍼 클래스에 서브 클래스의 메소드를 오버라이드 하는 방법
