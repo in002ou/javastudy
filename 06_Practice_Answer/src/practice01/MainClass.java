@@ -141,7 +141,7 @@ public class MainClass {
 	// 8x7? >>> 49
 	// 땡
 	public static void ex07() {
-		int dan = (int)(Math.random() * 8) + 2;
+		int dan = (int)(Math.random() * 8) + 2; 
 		int n = (int)(Math.random() * 9) + 1;
 		Scanner sc = new Scanner(System.in);
 		System.out.print(dan + "x" + n + "? >>> ");
