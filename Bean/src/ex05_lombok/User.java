@@ -9,7 +9,7 @@ import lombok.ToString;
 
 @Builder
 @ToString
-@NoArgsConstructor		// default 생성자
+@NoArgsConstructor// default 생성자
 @AllArgsConstructor
 @Getter
 @Setter

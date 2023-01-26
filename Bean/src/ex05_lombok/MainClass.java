@@ -1,5 +1,6 @@
 package ex05_lombok;
 
+
 public class MainClass {
 
 	public static void main(String[] args) {
