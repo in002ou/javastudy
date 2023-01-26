@@ -143,7 +143,7 @@ public class MainClass {
 			System.out.println(number1 + "/" + number2 + "=" + div);
 			sc.close();
 		
-		} catch(Exception e) {		
+		} catch(Exception e) {
 			// 날짜
 			LocalDateTime now = LocalDateTime.now();
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
