@@ -1,9 +1,16 @@
 package practice;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class MainClass {
 
@@ -45,31 +52,33 @@ public class MainClass {
 		*/
 	
 	public static void ex02() {
-		String sep = File.separator;
-		File dir = new File("C:" + sep + "Program Files" + sep + "Java" + sep + "jdk-11.0.17");
-		int count = 0;
-		long total = 0;
+		File dir = new File("C:" + File.separator + "Program Files" + File.separator + "Java" + File.separator + "jdk-11.0.17");
+		
 		if(dir.exists()) {
-			File[] files = dir.listFiles();
-			/*
-			  for(File file : files) {
-			  	if(file.isHidden()) {	// 숨긴 파일은 제외하겠다.
-			  		continue;
-			  		}
-			  }
-			 */
-			for(int i = 0; i < files.length; i++) {
-				String lmd = new SimpleDateFormat("yyyy-MM-dd a hh:mm").format(files[i].lastModified());
-				if(files[i].isFile()) {
-					long size = files[i].length();
-					System.out.println(lmd + " " + size + " 바이트 " + files[i].getName());
-					total += size;
-					count++;
-				} else if(files[i].isDirectory()){
-					System.out.println(lmd + " <DIR> " + files[i].getName());
+			
+			File[] list = dir.listFiles();
+			
+			int fileCount = 0;
+			long totalFileSize = 0;
+			for(File file : list) {
+				if(file.isHidden()) {
+					continue;
 				}
+				String lastModifiedDate = new SimpleDateFormat("yyyy-MM-dd  a hh:mm").format(file.lastModified());
+				String directory = file.isDirectory() ? "<DIR>" : "";
+				String size = "";
+				if(file.isFile()) {
+					long length = file.length();
+					size = new DecimalFormat("#,##0").format(length);
+					fileCount++;
+					totalFileSize += length;
+				}
+				String name = file.getName();
+				String result = String.format("%s%9s%9s %s\n", lastModifiedDate, directory, size, name);
+				System.out.print(result);
 			}
-			System.out.println(count + "개 파일 " + total + " 바이트");
+			System.out.println(fileCount + "개 파일 " + new DecimalFormat("#,##0").format(totalFileSize) + " 바이트");
+			
 		}
 	}
 	// 문제3. C:\storage 디렉터리를 삭제하시오.
@@ -86,9 +95,86 @@ public class MainClass {
 		}
 	}
 	
+	// 문제4. 사용자로부터 입력 받은 문자열을 c:\storage\diary.txt 파일로 보내시오
+	// 총 5개 문장을 입력 받아서 보내시오.
+	
+	public static void ex04 () {
+		Scanner sc = new Scanner(System.in);
+		String[] sentences = new String[5];
+		System.out.println("5문장을 입력하세요.");
+		for(int i = 0; i < sentences.length; i++) {
+			sentences[i] = sc.nextLine();
+		}
+		File dir = new File("C:" + File.separator + "storage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		File file = new File(dir, "diary.txt");
+		try (PrintWriter out = new PrintWriter(file)) {
+			for(int i = 0; i < sentences.length; i++) {
+				out.println(sentences[i]);
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		sc.close();
+	}
+	
+	// 문제5. 예외가 발생한 경우 예외 메세지와 예외 발생시간을 저장한 c:\storage\log.txt 파일로 보내시오.
+	
+	public static void ex05() {
+		
+		Scanner sc = new Scanner(System.in);
+		try {
+			System.out.println("첫 번째 정수를 입력하세요. >>> ");
+			int number1 = sc.nextInt();
+			
+			System.out.println("두 번째 정수를 입력하세요. >>> ");
+			int number2 = sc.nextInt();
+			
+			int add = number1 + number2;
+			int sub = number1 - number2;
+			int mul = number1 * number2;
+			int div = number1 / number2;
+			
+			System.out.println(number1 + "+" + number2 + "=" + add);
+			System.out.println(number1 + "-" + number2 + "=" + sub);
+			System.out.println(number1 + "*" + number2 + "=" + mul);
+			System.out.println(number1 + "/" + number2 + "=" + div);
+			sc.close();
+		
+		} catch(Exception e) {		
+			// 날짜
+			LocalDateTime now = LocalDateTime.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String dateTime = dtf.format(now);
+			// 예외 클래스 이름
+			String className = e.getClass().getName();
+			// 예외 메시지
+			String message = e.getMessage();
+			// 로그 파일 만들기
+			File dir = new File("C:" + File.separator + "storage");
+			if(dir.exists() == false) {
+				dir.mkdirs();
+			}
+				File file = new File(dir, "log.txt");
+				
+				// 생성 모드(언제나 새로 만든다.)이므로 로그에 기록이 누적되지 않는다.  new FileWriter(file);
+				// 추가모드(기존 내용에 추가한다.) 										new FileWriter(file, true);
+				
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))){
+				bw.write(dateTime + " " + className + " " + message + "\n");
+				// bw.newLine(); \n을 대신할 수 있는 코드
+				System.out.println("예외 메시지가 log.txt 파일에 기록되었습니다.");
+			} catch(IOException e2) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public static void main(String[] args) throws IOException {	// main 메소드를 호출하는 곳으로 예외 처리를 넘긴다.(개발자가 try-catch 하지 않겠다.)
 
-		ex03();
+		ex05();
 		
 	}
 
