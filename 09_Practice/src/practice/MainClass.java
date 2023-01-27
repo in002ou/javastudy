@@ -1,7 +1,9 @@
 package practice;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +11,14 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainClass {
 
@@ -172,9 +180,17 @@ public class MainClass {
 		}
 	}
 	
+	// 문제6. C:\storage\diary.txt 파일을 C:\storage\diary.txt 파일로 이동하시오
+	// 이동에 소요된 시간을 출력하시오.
+	public static void ex06() {
+	
+		
+		
+	}
+	
 	public static void main(String[] args) throws IOException {	// main 메소드를 호출하는 곳으로 예외 처리를 넘긴다.(개발자가 try-catch 하지 않겠다.)
 
-		ex05();
+		ex06();
 		
 	}
 

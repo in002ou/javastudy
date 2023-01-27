@@ -58,7 +58,7 @@ public class CSVMainClass {
 		try (PrintWriter out = new PrintWriter(file)) {
 			for(int i = 0; i < products.size(); i++) {
 				Map<String, Object>	product = products.get(i);
-				out.println(product.get("model") + " " + product.get("maker") + " " + product.get("price"));
+				out.println(product.get("model") + "," + product.get("maker") + "," + product.get("price"));
 			}
 		} catch(IOException e) {
 			e.printStackTrace();
