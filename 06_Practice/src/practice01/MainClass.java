@@ -1,5 +1,6 @@
 package practice01;
 
+import java.util.Scanner;
 
 public class MainClass {
 
@@ -33,7 +34,17 @@ public class MainClass {
 	// 질문 : 대한민국의 수도는? >>> 인천
 	// 오답입니다.
 	public static void ex04() {	
-		
+		Scanner sc = new Scanner(System.in);
+		String city = null;
+		do {
+			if(city != null) {
+				System.out.println("오답");
+			}
+			System.out.println("질문 : 대한민국의 수도는? >>>");
+			city = sc.next();
+		} while(!city.equals("서울") && !city.equalsIgnoreCase("seoul")) ;
+		System.out.println("정답");
+		sc.close();
 	}
 	
 	// 문제5. 평점 입력 받아서 해당 평점만큼 ★을 출력하시오.

@@ -169,7 +169,7 @@ public class Ex01_String {
 		// startsWith
 		// 문자열이 지정된 정규식 패턴(Regular Expression)으로 시작하면 true 반환
 		
-		// endwith
+		// endWith
 		// 문자열이 지정된 정규식 패턴(Regular Expression)으로 끝나면 true 반환
 	
 		// matches
