@@ -1,24 +1,25 @@
 package practice;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class MainClass {
 
@@ -216,10 +217,77 @@ public class MainClass {
 		} 
 		
 	}
+	// 문제7. System.in 은 키보드로부터 바이트 데이터를 입력 받는 InputStream이다.
+	// System.in으로부터 문장 1개를 입력 받아서 출력.
+	// Scanner 대신 BufferedReader를 사용.
+	public static void ex07() {
+		
+		
+		BufferedReader br = null;
+		
+		try {
+			br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("문장 입력 >>> ");
+			String sentence = br.readLine();
+			System.out.println("입력된 문장: " + sentence);
+			if(br != null) {
+				br.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	// 문제8. 키보드로부터 하나의 문장을 입력 받은 뒤 C:\storage\ex08.txt 파일에 출력
+	// scanner와 DataOutputStream 사용
+	public static void ex08() {
+	
+		DataOutputStream dos = null;
+		Scanner sc = new Scanner(System.in);
+		try {
+			dos = new DataOutputStream(new FileOutputStream(new File("C:" + File.separator + "storage", "ex08.txt")));
+			System.out.println("입력할 문장 >>> ");
+			String sentence = sc.nextLine();
+			
+			dos.writeUTF(sentence);
+			
+			if(dos != null) {
+				dos.close();
+			}
+			sc.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 문제9. C:\GDJ61\installer\eclipse-jee-2021-03-R-win32-x86_64.zip 파일을
+	// C:\storage\eclipse.zip으로 복사
+	public static void ex09() {
+		File from = new File("C:" + File.separator + "GDJ61" + File.separator + "installer", "eclipse-jee-2021-03-R-win32-x86_64.zip");
+		File to = new File("C:" + File.separator + "storage", "eclipse.zip");
+		BufferedInputStream bin = null;
+		BufferedOutputStream bout = null;
+		try {
+			bin = new BufferedInputStream(new FileInputStream(from));
+			bout = new BufferedOutputStream(new FileOutputStream(to));
+
+			byte[] b = new byte[1024];
+			int readByte = 0;
+			while((readByte = bin.read(b)) != -1) {
+				bout.write(b, 0, readByte);			// 배열 b의 인덱스 0부터 readByte개 데이터 사용
+			}
+			System.out.println("복사 완료");
+			if(bout != null && bin != null) {
+				bout.close();
+				bin.close();
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public static void main(String[] args) throws IOException {	// main 메소드를 호출하는 곳으로 예외 처리를 넘긴다.(개발자가 try-catch 하지 않겠다.)
 
-		ex06();
+		ex08();
 		
 	}
 
