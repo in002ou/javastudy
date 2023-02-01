@@ -301,7 +301,7 @@ public class MainClass {
 	public static void ex06() {
 		/*
 		 	인코딩(암호화) : 업무 데이터를 UTF-8 방식으로 암호화
-		 	디코딩(복호화) : UTF-8 방식으로 암호화된 데이터를 복원 
+		 	디코딩(복호화) : UTF-8 방식으로 암호화된 데이터를 복원
 		 */
 		String data = "한글 english 12345 !@#$+-";
 		try {
