@@ -116,12 +116,13 @@ public class XMLMainClass {
 			}
 			reader.close();
 			con.disconnect();
-			File file = new File("C:" + File.separator + "storage", "국제선운항스케쥴.xml");
+			System.out.println(sb.toString());
+			/*File file = new File("C:" + File.separator + "storage", "국제선운항스케쥴.xml");
 			writer = new BufferedWriter(new FileWriter(file));
 			writer.write(sb.toString());
 			writer.close();
 			System.out.println("국제선운항스케쥴.xml이 생성되었습니다.");
-		
+		*/
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
