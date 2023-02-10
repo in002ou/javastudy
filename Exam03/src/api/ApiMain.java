@@ -67,10 +67,10 @@ public class ApiMain {
 			}
 			System.out.println(result.toString());
 			
-		    /*writer = new FileWriter(file);
+		    writer = new FileWriter(file);
 			writer.write(result.toString());
 			writer.close();
-		  */
+		  
 			
 		} catch(Exception e) {
 			e.printStackTrace();
