@@ -58,6 +58,7 @@ public class ApiMain {
 			StringBuilder result = new StringBuilder();
 			List<Accident> accidentList = new ArrayList<Accident>();
 			JSONArray item = new JSONObject(sb.toString()).getJSONObject("items").getJSONArray("item");
+			
 			for(int i = 0; i < item.length(); i++) {
 				JSONObject obj = item.getJSONObject(i);
 				accident = new Accident(obj.getString("occrrnc_dt"), obj.getString("occrrnc_day_cd"), obj.getInt("dth_dnv_cnt"), obj.getInt("injpsn_cnt"));
